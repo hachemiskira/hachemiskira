@@ -1,160 +1,34 @@
-# n8n MCP Server Setup
+# Hi, I'm Hachem 👋
 
-This repository contains configuration and documentation for setting up the n8n MCP (Model Context Protocol) server with Claude Desktop.
+### 🤖 I build AI agents & automations that do real work for businesses.
 
-## Overview
+Outbound **voice agents**, customer **chat assistants**, and end-to-end **n8n workflows** — wired into the tools companies already use, with clean dashboards so clients can run it all themselves.
 
-The n8n MCP server allows Claude to interact with your n8n workflows, enabling automation and integration capabilities directly from Claude conversations.
+---
 
-## Prerequisites
+#### What I build
+- **AI voice agents** — outbound & inbound calling (ElevenLabs) that qualify leads, book meetings, and follow up by email
+- **Chat agents** — WhatsApp & Telegram assistants for sales and support
+- **Workflow automation** — n8n pipelines connecting CRMs, e-commerce, databases & AI
+- **Custom dashboards** — Next.js apps so clients manage everything without touching the plumbing
 
-- Node.js (v16 or higher)
-- npm or npx
-- An n8n instance (cloud or self-hosted)
-- n8n API key
+#### Tech I work with
+![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat&logo=n8n&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+![Shopify](https://img.shields.io/badge/Shopify-7AB55C?style=flat&logo=shopify&logoColor=white)
+![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat&logo=telegram&logoColor=white)
 
-## Getting Your n8n API Key
+#### 📫 Get in touch
+**Open to freelance projects & collaboration.**
+<!-- Add your links here when ready, e.g.: -->
+<!-- - 📧  your@email.com -->
+<!-- - 💼  https://linkedin.com/in/your-handle -->
 
-1. Log in to your n8n instance
-2. Navigate to **Settings** → **API**
-3. Click **Create API Key**
-4. Copy the generated API key
-5. Store it securely
-
-## Installation
-
-### 1. Install the n8n MCP Server
-
-The n8n MCP server can be run directly via npx without installation:
-
-```bash
-npx n8n-mcp
-```
-
-### 2. Configure Claude Desktop
-
-To use the n8n MCP server with Claude Desktop, you need to add the configuration to your Claude Desktop config file.
-
-**Configuration File Location:**
-
-- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Linux**: `~/.config/Claude/claude_desktop_config.json`
-- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-
-**Add the following configuration:**
-
-```json
-{
-  "mcpServers": {
-    "n8n-mcp": {
-      "command": "npx",
-      "args": ["n8n-mcp"],
-      "env": {
-        "MCP_MODE": "stdio",
-        "LOG_LEVEL": "error",
-        "DISABLE_CONSOLE_OUTPUT": "true",
-        "N8N_API_URL": "YOUR_N8N_INSTANCE_URL",
-        "N8N_API_KEY": "YOUR_N8N_API_KEY"
-      }
-    }
-  }
-}
-```
-
-**Replace the placeholders:**
-
-- `YOUR_N8N_INSTANCE_URL`: Your n8n instance URL (e.g., `https://your-instance.app.n8n.cloud`)
-- `YOUR_N8N_API_KEY`: Your n8n API key
-
-### 3. Restart Claude Desktop
-
-After updating the configuration file, restart Claude Desktop to load the n8n MCP server.
-
-## Configuration Options
-
-### Environment Variables
-
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `MCP_MODE` | Communication mode for MCP | `stdio` | Yes |
-| `LOG_LEVEL` | Logging level (error, warn, info, debug) | `info` | No |
-| `DISABLE_CONSOLE_OUTPUT` | Disable console output | `false` | No |
-| `N8N_API_URL` | Your n8n instance URL | - | Yes |
-| `N8N_API_KEY` | Your n8n API key | - | Yes |
-
-## Example Configuration
-
-See the `config/mcp-config.example.json` file for a complete example configuration.
-
-## Verification
-
-To verify the setup is working:
-
-1. Open Claude Desktop
-2. Start a new conversation
-3. Ask Claude to list available n8n workflows
-4. Claude should be able to interact with your n8n instance
-
-## Security Considerations
-
-**IMPORTANT**: Never commit your actual API keys to version control!
-
-- Use environment variables for sensitive data
-- Add `claude_desktop_config.json` to your `.gitignore` if storing locally
-- Rotate API keys regularly
-- Use read-only API keys when possible
-- Limit API key permissions to necessary scopes
-
-## Troubleshooting
-
-### Server Not Loading
-
-1. Check that the configuration file is valid JSON
-2. Verify the file location is correct for your OS
-3. Check Claude Desktop logs for errors
-4. Ensure `npx` is available in your PATH
-
-### API Connection Issues
-
-1. Verify your n8n instance is accessible
-2. Check that the API key is valid and not expired
-3. Ensure the API URL includes the protocol (https://)
-4. Check firewall/network settings
-
-### Permission Errors
-
-1. Ensure the API key has necessary permissions
-2. Check n8n instance settings for API access
-3. Verify your n8n plan includes API access
-
-## Features
-
-With the n8n MCP server, Claude can:
-
-- List available workflows
-- Execute workflows
-- Check workflow execution status
-- Retrieve workflow results
-- Manage workflow parameters
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
-## Resources
-
-- [n8n Documentation](https://docs.n8n.io/)
-- [n8n MCP Server](https://github.com/n8n-io/n8n-mcp)
-- [Model Context Protocol Specification](https://modelcontextprotocol.io/)
-- [Claude Desktop Documentation](https://docs.claude.com/)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For issues related to:
-- **n8n MCP Server**: Open an issue in the n8n-mcp repository
-- **Claude Desktop**: Contact Anthropic support
-- **n8n Platform**: Visit n8n community forum or support channels
+---
+<sub>⚡ Automating the boring parts so businesses can focus on the work that matters.</sub>
